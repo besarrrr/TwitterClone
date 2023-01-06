@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
+import userRoutes from "./routes/users.js"
+
 const app = express();
 dotenv.config();
 
@@ -14,7 +16,9 @@ const connect = () => {
     .catch((err) => {throw err})
 };
 
-app.listen(3001, () => {
+app.use('/users', userRoutes);
+
+app.listen(8000, () => {
  connect();
  console.log("Nice")
 });   
